@@ -4,16 +4,15 @@ version: 1.0.0-SNAPSHOT
 description: Chart to deploy kube-prometheus-stack
 
 dependencies:
-  # https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/Chart.yaml
-  # - name: kube-prometheus-stack
-  #   version: 34.6.0
-  #   repository: https://prometheus-community.github.io/helm-charts
-  - name: promtail
-    version: 6.11.2
-    repository: https://grafana.github.io/helm-charts
-  - name: loki-distributed
-    version: 0.69.16
-    repository: https://grafana.github.io/helm-charts
+  - name: kube-prometheus-stack
+    version: 34.6.0
+    repository: https://prometheus-community.github.io/helm-charts
+  # - name: promtail
+  #   version: 6.11.2
+  #   repository: https://grafana.github.io/helm-charts
+  # - name: loki-distributed
+  #   version: 0.69.16
+  #   repository: https://grafana.github.io/helm-charts
   # - name: tempo-distributed
   #   version: 1.4.1
   #   repository: https://grafana.github.io/helm-charts
