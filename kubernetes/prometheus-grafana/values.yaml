@@ -1520,7 +1520,6 @@ tempo-distributed:
       search:
         max_duration: 0
     multitenancy_enabled: false
-    search_enabled: true
     compactor:
       compaction:
         block_retention: 1440h
@@ -1557,7 +1556,6 @@ tempo-distributed:
       join_members:
         - tempo-tempo-distributed-gossip-ring
     overrides:
-      max_search_bytes_per_trace: 0
       per_tenant_override_config: /conf/overrides.yaml
     server:
       http_listen_port: 3100
