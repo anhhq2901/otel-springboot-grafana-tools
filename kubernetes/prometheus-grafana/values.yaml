@@ -1499,7 +1499,7 @@ loki-distributed:
       # -- Specifies the namespace the discovery Pods are running in
       namespaceSelector: {}
 
-# tempo-distributed:
+tempo-distributed:
   traces:
     otlp:
       grpc:
@@ -1544,7 +1544,7 @@ loki-distributed:
               endpoint: 0.0.0.0:4317
     querier:
       frontend_worker:
-        frontend_address: tempo-tempo-distributed-query-frontend-discovery:9095
+        frontend_address: monitoring-tempo-distributed-query-frontend-discovery:9095
     ingester:
       lifecycler:
         ring:
