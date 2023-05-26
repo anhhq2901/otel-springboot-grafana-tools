@@ -37,7 +37,7 @@ kube-prometheus-stack:
               target_label: kubernetes_name
   grafana:
     service:
-      type: LoadBalancer
+      type: ClusterIP
     # Anonymous login without credentials -- ONLY NON PRODUCTION ENVIRONMENTS!
     grafana.ini:
       auth:
