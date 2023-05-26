@@ -183,6 +183,9 @@ loki-distributed:
         join_members:
           - {{ include "loki.fullname" . }}-memberlist
 
+      common:
+        compactor_address: {{ include "loki.compactorFullname" . }}:3100
+
       ingester:
         lifecycler:
           ring:
