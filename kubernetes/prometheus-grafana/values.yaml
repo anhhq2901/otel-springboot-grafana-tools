@@ -49,47 +49,47 @@ kube-prometheus-stack:
     sidecar:
       dashboards:
         searchNamespace: ALL
-    # Import Prometheus, Loki and Tempo Datasources
-    # additionalDataSources:
-    #   - name: Prometheus
-    #     type: prometheus
-    #     uid: prometheus
-    #     access: proxy
-    #     url: http://kube-prometheus-stack-prometheus:9090
-    #     jsonData:
-    #       exemplarTraceIdDestinations:
-    #         # Prometheus Exemplar Metrics relationated with Tempo trace_id variable.
-    #         - name: trace_id
-    #           datasourceUid: tempo
-    #           urlDisplayLabel: View in Tempo
-    #   - name: Loki
-    #     type: loki
-    #     uid: loki
-    #     access: proxy
-    #     url: http://loki-loki-distributed-gateway
-    #     jsonData:
-    #       derivedFields:
-    #         # Opentelemetry set trace_id in log and Loki search this metric for relating with Tempo traces.
-    #         - name: trace_id
-    #           datasourceUid: tempo
-    #           matcherRegex: "trace_id=(\\w+)"
-    #           url: '$${__value.raw}'
-    #   - name: Tempo
-    #     type: tempo
-    #     uid: tempo
-    #     access: proxy
-    #     url: http://tempo-tempo-distributed-query-frontend:3100
-    #     jsonData:
-    #       httpMethod: GET
-    #       # Tempo redirects to Loki logs by specific trace_id
-    #       tracesToLogs:
-    #         datasourceUid: 'loki'
-    #         tags: [ 'app' ]
-    #         spanStartTimeShift: 1s
-    #         spandEndTimeShift: 1s
-    #         lokiSearch: true
-    #       serviceMap:
-    #         datasourceUid: 'prometheus'
+    #Import Prometheus, Loki and Tempo Datasources
+    additionalDataSources:
+      - name: Prometheus
+        type: prometheus
+        uid: prometheus
+        access: proxy
+        url: http://kube-prometheus-stack-prometheus:9090
+        jsonData:
+          exemplarTraceIdDestinations:
+            # Prometheus Exemplar Metrics relationated with Tempo trace_id variable.
+            - name: trace_id
+              datasourceUid: tempo
+              urlDisplayLabel: View in Tempo
+      - name: Loki
+        type: loki
+        uid: loki
+        access: proxy
+        url: http://loki-loki-distributed-gateway
+        jsonData:
+          derivedFields:
+            # Opentelemetry set trace_id in log and Loki search this metric for relating with Tempo traces.
+            - name: trace_id
+              datasourceUid: tempo
+              matcherRegex: "trace_id=(\\w+)"
+              url: '$${__value.raw}'
+      - name: Tempo
+        type: tempo
+        uid: tempo
+        access: proxy
+        url: http://tempo-tempo-distributed-query-frontend:3100
+        jsonData:
+          httpMethod: GET
+          # Tempo redirects to Loki logs by specific trace_id
+          tracesToLogs:
+            datasourceUid: 'loki'
+            tags: [ 'app' ]
+            spanStartTimeShift: 1s
+            spandEndTimeShift: 1s
+            lokiSearch: true
+          serviceMap:
+            datasourceUid: 'prometheus'
 promtail:
   config:
     snippets:
