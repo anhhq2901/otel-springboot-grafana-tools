@@ -39,13 +39,13 @@ kube-prometheus-stack:
     service:
       type: ClusterIP
     # Anonymous login without credentials -- ONLY NON PRODUCTION ENVIRONMENTS!
-    grafana.ini:
-      auth:
-        disable_login_form: true
-      auth.anonymous:
-        enabled: true
-        org_name: "Main Org."
-        org_role: Admin
+    # grafana.ini:
+    #   auth:
+    #     disable_login_form: true
+    #   auth.anonymous:
+    #     enabled: true
+    #     org_name: "Main Org."
+    #     org_role: Admin
     sidecar:
       dashboards:
         searchNamespace: ALL
