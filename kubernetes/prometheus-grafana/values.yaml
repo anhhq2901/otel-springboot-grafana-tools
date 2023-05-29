@@ -1543,7 +1543,7 @@ tempo-distributed:
               endpoint: 0.0.0.0:4317
     querier:
       frontend_worker:
-        frontend_address: monitoring-tempo-distributed-query-frontend-discovery:9095
+        frontend_address: monitoring-tempo-query-frontend:9095
     ingester:
       lifecycler:
         ring:
