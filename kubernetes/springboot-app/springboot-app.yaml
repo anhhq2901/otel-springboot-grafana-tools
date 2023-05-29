@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: springboot-app
-          image: "stazdx/otel-springboot-prometheus"
+          image: "anhhq/test:java"
           imagePullPolicy: Always
           ports:
             - name: http
