@@ -55,7 +55,7 @@ kube-prometheus-stack:
         type: prometheus
         uid: prometheus
         access: proxy
-        url: http://kube-prometheus-stack-prometheus:9090
+        url: http://monitoring-kube-prometheus-prometheus:9090
         jsonData:
           exemplarTraceIdDestinations:
             # Prometheus Exemplar Metrics relationated with Tempo trace_id variable.
@@ -66,7 +66,7 @@ kube-prometheus-stack:
         type: loki
         uid: loki
         access: proxy
-        url: http://loki-loki-distributed-gateway
+        url: http://monitoring-loki-distributed-gateway
         jsonData:
           derivedFields:
             # Opentelemetry set trace_id in log and Loki search this metric for relating with Tempo traces.
@@ -78,7 +78,7 @@ kube-prometheus-stack:
         type: tempo
         uid: tempo
         access: proxy
-        url: http://tempo-tempo-distributed-query-frontend:3100
+        url: http:/monitoring-tempo-query-frontend:3100
         jsonData:
           httpMethod: GET
           # Tempo redirects to Loki logs by specific trace_id
