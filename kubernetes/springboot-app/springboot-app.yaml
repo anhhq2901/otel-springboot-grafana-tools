@@ -50,7 +50,7 @@ spec:
               value: otlp,logging
             # Setting Tempo Distributor Service using GRPC Port -> 4317
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: http://monitoring-tempo-distributor.monitoring.svc.cluster.local:4317
+              value: http://monitoring-tempo-distributor.monitor.svc.cluster.local:4317
             - name: OTEL_SERVICE_NAME
               value: springboot-app
             - name: KUBE_POD_NAME
