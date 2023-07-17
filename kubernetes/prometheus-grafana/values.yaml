@@ -90,6 +90,10 @@ kube-prometheus-stack:
             lokiSearch: true
           serviceMap:
             datasourceUid: 'prometheus'
+  prometheus-node-exporter:
+    hostRootFsMount:
+      enabled: false
+      
 promtail:
   config:
     snippets:

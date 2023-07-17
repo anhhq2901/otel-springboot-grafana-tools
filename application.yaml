@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring
+spec:
+  project: default
+  source:
+    path: kubernetes/prometheus-grafana
+    repoURL: https://github.com/anhhq2901/otel-springboot-grafana-tools
+    targetRevision: master
+    helm:
+      valueFiles:
+      - values.yaml
+  destination:
+    namespace: prometheus-operator
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true
+  ignoreDifferences:
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    jqPathExpressions:
+    - .spec.endpoints[]?.relabelings[]?.action
